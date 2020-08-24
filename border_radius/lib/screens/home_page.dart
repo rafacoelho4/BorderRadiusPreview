@@ -7,6 +7,8 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Border Radius Preview'),
+        centerTitle: true,
+        elevation: 0,
         backgroundColor: Colors.purple[400],
       ),
       body: SingleChildScrollView(
@@ -43,6 +45,12 @@ class _MainPageState extends State<MainPage> {
   }
   ''';
     Clipboard.setData(new ClipboardData(text: _borderCode.toString()));
+
+    final snackBar = SnackBar(
+      content: Text('Copiado para área de transferência!'),
+      backgroundColor: Colors.purple,
+    );
+    Scaffold.of(context).showSnackBar(snackBar);
   }
 
   @override
@@ -68,7 +76,8 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             children: <Widget>[
               TextFormField(
-                keyboardType: TextInputType.number,
+                cursorColor: Colors.purple,
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
                 controller: borderController,
                 validator: (value) {
                   if (value.isEmpty) {
@@ -76,6 +85,17 @@ class _MainPageState extends State<MainPage> {
                   } else
                     return null;
                 },
+                decoration: new InputDecoration(
+                  prefixText: '',
+                  hintText: '',
+                  suffix: Text(''),
+                  fillColor: Colors.transparent,
+                  filled: true,
+                  contentPadding:
+                      EdgeInsets.only(bottom: 10.0, left: 10.0, right: 10.0),
+                  labelText: 'border-radius',
+                  labelStyle: TextStyle(color: Colors.purple),
+                ),
               ),
               SizedBox(
                 height: 20.0,
