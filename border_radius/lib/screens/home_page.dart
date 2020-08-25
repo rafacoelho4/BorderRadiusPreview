@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> {
     String _borderCode = '''
 .box {
   border-radius: ${_border}px;
-  }
+}
   ''';
     Clipboard.setData(new ClipboardData(text: _borderCode.toString()));
 
